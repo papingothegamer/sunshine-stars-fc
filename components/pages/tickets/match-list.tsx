@@ -1,80 +1,70 @@
 "use client"
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
+import { format } from "date-fns"
 import { Button } from "@/components/ui/button"
-import { TicketDialog } from "./ticket-dialog"
+import { Card, CardContent } from "@/components/ui/card"
+import { useTicketDialog, TicketDialog } from "@/components/pages/tickets/ticket-dialog"
 
 const matches = [
   {
     id: 1,
-    homeTeam: {
-      name: "Sunshine Stars FC",
-      logo: "/placeholder.svg",
-    },
-    awayTeam: {
-      name: "Sporting Lagos",
-      logo: "/placeholder.svg",
-    },
+    homeTeam: "Sunshine Stars",
+    awayTeam: "City Rangers",
     competition: "Premier League",
-    date: "Sat 25 Jan 2025",
-    time: "17:30",
-    venue: "Akure Township Stadium",
+    date: new Date("2025-02-03T20:00:00"),
+    venue: "Sunshine Stadium",
     isHome: true,
   },
-  // Add more matches...
+  {
+    id: 2,
+    homeTeam: "Metro Knights",
+    awayTeam: "Sunshine Stars",
+    competition: "FA Cup",
+    date: new Date("2025-02-10T15:00:00"),
+    venue: "Metro Arena",
+    isHome: false,
+  },
+  // Add more matches as needed
 ]
 
 export function MatchList() {
-  const [selectedMatch, setSelectedMatch] = useState<(typeof matches)[0] | null>(null)
+  const { openDialog } = useTicketDialog()
 
   return (
-    <div className="space-y-4 mt-8">
-      <h2 className="text-2xl text-orange-600 mb-4">January</h2>
-
-      <div className="grid gap-4">
-        {matches.map((match) => (
-          <motion.div
-            key={match.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-lg p-4"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <Image
-                    src={match.homeTeam.logo || "/placeholder.svg"}
-                    alt={match.homeTeam.name}
-                    width={40}
-                    height={40}
-                  />
-                  <span className="font-bold">vs</span>
-                  <Image
-                    src={match.awayTeam.logo || "/placeholder.svg"}
-                    alt={match.awayTeam.name}
-                    width={40}
-                    height={40}
-                  />
+    <div className="space-y-4">
+      {matches.map((match, index) => (
+        <motion.div
+          key={match.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+        >
+          <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-sm text-muted-foreground">{match.competition}</span>
+                    <span className="text-sm text-muted-foreground">•</span>
+                    <span className="text-sm text-muted-foreground">{format(match.date, "EEE dd MMM yyyy")}</span>
+                    <span className="text-sm text-muted-foreground">•</span>
+                    <span className="text-sm text-muted-foreground">{format(match.date, "HH:mm")}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-1">
+                    {match.homeTeam} vs {match.awayTeam}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{match.venue}</p>
                 </div>
-                <div>
-                  <h3 className="font-bold">{match.awayTeam.name}</h3>
-                  <p className="text-sm text-gray-600">{match.competition}</p>
-                  <p className="text-sm text-gray-600">
-                    {match.date} | {match.venue} | {match.time}
-                  </p>
-                </div>
+                <Button onClick={() => openDialog(match)} className="min-w-[120px]">
+                  Buy Tickets
+                </Button>
               </div>
-              <Button onClick={() => setSelectedMatch(match)} className="bg-blue-600 hover:bg-blue-700">
-                View Tickets
-              </Button>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <TicketDialog match={selectedMatch} open={!!selectedMatch} onOpenChange={() => setSelectedMatch(null)} />
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+      <TicketDialog />
     </div>
   )
 }

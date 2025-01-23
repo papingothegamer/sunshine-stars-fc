@@ -3,29 +3,26 @@
 import { motion } from "framer-motion"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-const categories = [
-  { id: "mens", label: "Men's" },
-  { id: "womens", label: "Women's" },
-  { id: "academy", label: "Academy" },
-  { id: "events", label: "Events" },
-]
-
 export function TicketCategories() {
+  const categories = [
+    { value: "all", label: "All Competitions" },
+    { value: "premier-league", label: "Premier League" },
+    { value: "fa-cup", label: "FA Cup" },
+    { value: "league-cup", label: "League Cup" },
+  ]
+
   return (
-    <Tabs defaultValue="mens" className="w-full">
-      <TabsList className="w-full justify-start bg-blue-700/50 h-auto flex-wrap">
-        {categories.map((category) => (
-          <motion.div key={category.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <TabsTrigger
-              value={category.id}
-              className="text-white data-[state=active]:bg-white data-[state=active]:text-blue-900"
-            >
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+      <Tabs defaultValue="all" className="w-full">
+        <TabsList className="w-full justify-start">
+          {categories.map((category) => (
+            <TabsTrigger key={category.value} value={category.value} className="text-sm">
               {category.label}
             </TabsTrigger>
-          </motion.div>
-        ))}
-      </TabsList>
-    </Tabs>
+          ))}
+        </TabsList>
+      </Tabs>
+    </motion.div>
   )
 }
 
