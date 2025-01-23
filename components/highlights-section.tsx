@@ -40,7 +40,7 @@ export function HighlightsSection() {
     <section className="py-8 bg-muted relative">
       <DiagonalPattern />
       <div className="container relative">
-        <h2 className="text-2xl mb-6">More Highlights</h2>
+        <h2 className="text-2xl mb-6 ">More Highlights</h2>
         <ScrollArea className="w-full whitespace-nowrap rounded-md">
           <div className="flex w-max space-x-4 p-4">
             {content.map((item, index) => (
