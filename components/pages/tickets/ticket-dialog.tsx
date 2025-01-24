@@ -85,25 +85,25 @@ export function useTicketDialog() {
 
 export function TicketDialog() {
   const { isOpen, selectedMatch, closeDialog } = useTicketDialog()
-  const [selectedCategory, setSelectedCategory] = useState<string>("")
+  const [selectedSection, setSelectedSection] = useState<string>("")
   const [quantity, setQuantity] = useState(1)
-  const [zoom, setZoom] = useState(1)
+  const [scale, setScale] = useState(1)
 
   const handleQuantityChange = (delta: number) => {
     setQuantity((prev) => Math.max(1, Math.min(prev + delta, 4)))
   }
 
   const handleZoom = (delta: number) => {
-    setZoom((prev) => Math.max(0.5, Math.min(prev + delta, 2)))
+    setScale((prev) => Math.max(0.5, Math.min(prev + delta, 2)))
   }
 
-  const selectedTicketCategory = ticketCategories.find((cat) => cat.id === selectedCategory)
+  const selectedTicketCategory = ticketCategories.find((cat) => cat.id === selectedSection)
 
   if (!selectedMatch) return null
 
   return (
     <Dialog open={isOpen} onOpenChange={closeDialog}>
-      <DialogContent className="max-w-4xl h-[90vh] p-0">
+      <DialogContent className="max-w-4xl h-[90vh] p-0 overflow-hidden" style={{ "--backdrop-opacity": "0.5" } as any}>
         <DialogHeader className="p-6 border-b">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-2xl">
@@ -121,37 +121,43 @@ export function TicketDialog() {
                     <p className="text-sm text-muted-foreground mb-4">
                       Click on the stadium map to select your preferred seating area
                     </p>
-                    <div className="relative aspect-[16/9] bg-muted rounded-lg overflow-hidden">
-                      <div
-                        style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}
-                        className="transition-transform"
-                      >
-                        <StadiumMap onSelectSection={setSelectedCategory} selectedSection={selectedCategory} />
-                      </div>
-                    </div>
+                    <StadiumMap
+                      onSelectSection={setSelectedSection}
+                      selectedSection={selectedSection}
+                      scale={scale}
+                      onZoom={handleZoom}
+                    />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">Available Tickets</h3>
-                    <div className="space-y-2">
-                      {ticketCategories.map((category) => (
-                        <div
-                          key={category.id}
-                          className={`p-4 rounded-lg border cursor-pointer transition-colors ${
-                            selectedCategory === category.id ? "border-primary bg-primary/5" : "hover:border-primary/50"
-                          }`}
-                          onClick={() => setSelectedCategory(category.id)}
-                        >
-                          <div className="flex justify-between items-center">
-                            <div>
-                              <h4 className="font-medium">{category.name}</h4>
-                              <p className="text-sm text-muted-foreground">{category.available} tickets available</p>
+                  {selectedSection && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <h3 className="text-lg font-semibold mb-2">Available Tickets</h3>
+                      <div className="space-y-2">
+                        {ticketCategories.map((category) => (
+                          <div
+                            key={category.id}
+                            className={`p-4 rounded-lg border cursor-pointer transition-colors ${
+                              selectedSection === category.id
+                                ? "border-primary bg-primary/5"
+                                : "hover:border-primary/50"
+                            }`}
+                            onClick={() => setSelectedSection(category.id)}
+                          >
+                            <div className="flex justify-between items-center">
+                              <div>
+                                <h4 className="font-medium">{category.name}</h4>
+                                <p className="text-sm text-muted-foreground">{category.available} tickets available</p>
+                              </div>
+                              <p className="text-lg font-semibold">₦{category.price.toLocaleString()}</p>
                             </div>
-                            <p className="text-lg font-semibold">₦{category.price.toLocaleString()}</p>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
               </ScrollArea>
               <div className="border-l">
