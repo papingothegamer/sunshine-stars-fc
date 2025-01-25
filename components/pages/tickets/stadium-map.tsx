@@ -135,7 +135,7 @@ export function StadiumMap({ onSelectSection, selectedSection, scale, onZoom }: 
           className="bg-white/90 hover:bg-white"
           aria-label="Zoom out"
         >
-          <ZoomOut className="h-4 w-4" />
+          <ZoomOut className="h-4 w-4 text-secondary" />
         </Button>
         <Button
           variant="secondary"
@@ -145,7 +145,7 @@ export function StadiumMap({ onSelectSection, selectedSection, scale, onZoom }: 
           className="bg-white/90 hover:bg-white"
           aria-label="Zoom in"
         >
-          <ZoomIn className="h-4 w-4" />
+          <ZoomIn className="h-4 w-4 text-secondary" />
         </Button>
         <div className="bg-white/90 px-2 py-1 rounded-md text-sm font-medium">
           <Move className="h-4 w-4 inline mr-1" />

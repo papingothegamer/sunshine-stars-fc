@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react"
 
-type View = "players" | "technical-team" | "coaches"
+type View = "bio" | "players" | "technical-team" | "coaches"
 
 interface ClubContextType {
   currentView: View
@@ -12,7 +12,7 @@ interface ClubContextType {
 const ClubContext = createContext<ClubContextType | undefined>(undefined)
 
 export function ClubProvider({ children }: { children: React.ReactNode }) {
-  const [currentView, setCurrentView] = useState<View>("players")
+  const [currentView, setCurrentView] = useState<View>("bio")
 
   return (
     <ClubContext.Provider

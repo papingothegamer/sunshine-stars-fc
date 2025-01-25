@@ -9,6 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { StadiumMap } from "./stadium-map"
 import { Minus, Plus } from "lucide-react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useRouter } from "next/navigation"
 
 interface Match {
   id: number
@@ -84,6 +85,7 @@ export function useTicketDialog() {
 }
 
 export function TicketDialog() {
+  const router = useRouter()
   const { isOpen, selectedMatch, closeDialog } = useTicketDialog()
   const [selectedSection, setSelectedSection] = useState<string>("")
   const [quantity, setQuantity] = useState(1)
@@ -98,6 +100,17 @@ export function TicketDialog() {
   }
 
   const selectedTicketCategory = ticketCategories.find((cat) => cat.id === selectedSection)
+
+  const handleContinueToPayment = () => {
+    // Ensure there's a selected category and quantity before navigating
+    if (selectedTicketCategory && quantity > 0) {
+      // Add a small delay to ensure dialog closes before navigation
+      setTimeout(() => {
+        closeDialog()
+        router.push("/checkout/tickets")
+      }, 100)
+    }
+  }
 
   if (!selectedMatch) return null
 
@@ -161,11 +174,12 @@ export function TicketDialog() {
                 </div>
               </ScrollArea>
               <div className="border-l">
-                <ScrollArea className="h-full">
+              <ScrollArea className="h-full">
                   <TicketSidebar
                     selectedTicketCategory={selectedTicketCategory}
                     quantity={quantity}
                     handleQuantityChange={handleQuantityChange}
+                    onContinueToPayment={handleContinueToPayment}
                   />
                 </ScrollArea>
               </div>
@@ -181,7 +195,12 @@ export function TicketDialog() {
   )
 }
 
-function TicketSidebar({ selectedTicketCategory, quantity, handleQuantityChange }: TicketSidebarProps) {
+function TicketSidebar({ 
+  selectedTicketCategory, 
+  quantity, 
+  handleQuantityChange,
+  onContinueToPayment 
+}: TicketSidebarProps & { onContinueToPayment?: () => void }) {
   return (
     <div className="p-6 bg-muted/50">
       <div className="space-y-6">
@@ -239,7 +258,7 @@ function TicketSidebar({ selectedTicketCategory, quantity, handleQuantityChange 
                   <span>₦{((selectedTicketCategory.price + 500) * quantity).toLocaleString()}</span>
                 </div>
               </div>
-              <Button className="w-full mt-6" size="lg">
+              <Button className="w-full mt-6" size="lg" onClick={onContinueToPayment}>
                 Continue to Payment
               </Button>
             </>

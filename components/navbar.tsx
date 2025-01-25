@@ -1,19 +1,52 @@
 "use client"
-
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
+import { useState, useEffect } from "react"
+import { useMediaQuery } from "react-responsive"
 
 export function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" })
+
+  // Close mobile menu when switching to desktop view
+  useEffect(() => {
+    if (!isMobile) {
+      setIsMobileMenuOpen(false)
+    }
+  }, [isMobile])
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsMobileMenuOpen(false)
+    }
+  }
+
   const menuItems = [
     { href: "/tickets", label: "Tickets" },
     { href: "/schedule", label: "Schedule" },
     { href: "/club", label: "Club" },
     { href: "/matchday", label: "Matchday" },
     { href: "/news", label: "News" },
-    { href: "/video", label: "Video" },
+    { href: "/fan-shop", label: "Fan Shop" },
   ]
+
+  const NavItems = () => (
+    <>
+      {menuItems.map((item) => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="text-sm font-medium text-secondary hover:text-primary transition-colors"
+          onClick={handleLinkClick}
+        >
+          {item.label}
+        </Link>
+      ))}
+    </>
+  )
 
   return (
     <motion.header initial={{ y: -100 }} animate={{ y: 0 }} className="sticky top-0 z-50 w-full border-b bg-white">
@@ -26,25 +59,28 @@ export function Navbar() {
             whileHover={{ scale: 1.1 }}
           />
         </Link>
-        <nav className="hidden md:flex items-center space-x-6">
-          {menuItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-secondary hover:text-primary transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
-        </div>
+        {isMobile ? (
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[240px] sm:w-[300px]">
+              <nav className="flex flex-col space-y-4 mt-8">
+                <NavItems />
+              </nav>
+            </SheetContent>
+          </Sheet>
+        ) : (
+          <div className="flex-1 flex justify-center">
+            <nav className="flex items-center space-x-6">
+              <NavItems />
+            </nav>
+          </div>
+        )}
       </div>
     </motion.header>
   )
 }
-
