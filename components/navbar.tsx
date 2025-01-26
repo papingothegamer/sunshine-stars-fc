@@ -1,15 +1,18 @@
 "use client"
+
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
+import { Menu, ShoppingBag } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useMediaQuery } from "react-responsive"
+import { useCart } from "@/components/cart/cart-context"
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" })
+  const { cartItems } = useCart()
 
   // Close mobile menu when switching to desktop view
   useEffect(() => {
@@ -17,12 +20,6 @@ export function Navbar() {
       setIsMobileMenuOpen(false)
     }
   }, [isMobile])
-
-  const handleLinkClick = () => {
-    if (isMobile) {
-      setIsMobileMenuOpen(false)
-    }
-  }
 
   const menuItems = [
     { href: "/tickets", label: "Tickets" },
@@ -33,13 +30,19 @@ export function Navbar() {
     { href: "/fan-shop", label: "Fan Shop" },
   ]
 
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsMobileMenuOpen(false)
+    }
+  }
+
   const NavItems = () => (
     <>
       {menuItems.map((item) => (
         <Link
           key={item.href}
           href={item.href}
-          className="text-sm font-medium text-secondary hover:text-primary transition-colors"
+          className="text-sm font-medium text-secondary hover:text-primary transition-colors px-3"
           onClick={handleLinkClick}
         >
           {item.label}
@@ -51,6 +54,7 @@ export function Navbar() {
   return (
     <motion.header initial={{ y: -100 }} animate={{ y: 0 }} className="sticky top-0 z-50 w-full border-b bg-white">
       <div className="container flex h-16 items-center justify-between">
+        {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <motion.img
             src="/media/img/badge.png"
@@ -59,28 +63,42 @@ export function Navbar() {
             whileHover={{ scale: 1.1 }}
           />
         </Link>
-        {isMobile ? (
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[240px] sm:w-[300px]">
-              <nav className="flex flex-col space-y-4 mt-8">
-                <NavItems />
-              </nav>
-            </SheetContent>
-          </Sheet>
-        ) : (
-          <div className="flex-1 flex justify-center">
-            <nav className="flex items-center space-x-6">
-              <NavItems />
-            </nav>
-          </div>
+
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <nav className="hidden md:flex items-center justify-center flex-1">
+            <NavItems />
+          </nav>
         )}
+
+        {/* Mobile Menu and Cart */}
+        <div className="flex items-center space-x-4">
+          {isMobile && (
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[240px] sm:w-[300px]">
+                <nav className="flex flex-col space-y-4 mt-8">
+                  <NavItems />
+                </nav>
+              </SheetContent>
+            </Sheet>
+          )}
+          <Link href="/cart" className="relative">
+            <ShoppingBag className="h-6 w-6" />
+            {cartItems.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                {cartItems.length}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
     </motion.header>
   )
 }
+

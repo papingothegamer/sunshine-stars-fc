@@ -5,9 +5,22 @@ import { ProductGrid } from "./product-grid"
 import { ProductFilters } from "./product-filters"
 import { useState } from "react"
 import { type Product, products } from "@/lib/data/products"
+import { Input } from "@/components/ui/input"
+import { Search } from "lucide-react"
 
 export function FanShopLayout() {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products)
+  const [searchTerm, setSearchTerm] = useState("")
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term)
+    const filtered = products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(term.toLowerCase()) ||
+        product.description.toLowerCase().includes(term.toLowerCase()),
+    )
+    setFilteredProducts(filtered)
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,7 +50,21 @@ export function FanShopLayout() {
         <main className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row gap-8">
             <aside className="w-full md:w-1/4">
-              <ProductFilters setFilteredProducts={setFilteredProducts} />
+              <div className="sticky top-24">
+                <div className="mb-6">
+                  <div className="relative">
+                    <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <Input
+                      type="text"
+                      placeholder="Search products..."
+                      value={searchTerm}
+                      onChange={(e) => handleSearch(e.target.value)}
+                      className="pl-10"
+                    />
+                  </div>
+                </div>
+                <ProductFilters setFilteredProducts={setFilteredProducts} />
+              </div>
             </aside>
             <div className="w-full md:w-3/4">
               <ProductGrid products={filteredProducts} />
