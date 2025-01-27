@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
 import { useCart } from "@/components/cart/cart-context"
-import { Minus, Plus, ShoppingCart } from "lucide-react"
+import { Minus, Plus, ShoppingBag } from "lucide-react"
 
 interface ProductDetailProps {
   productId: string
@@ -64,7 +64,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
               </Button>
             </div>
             <Button onClick={handleAddToCart} className="w-full" size="lg">
-              <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
+              <ShoppingBag className="mr-2 h-5 w-5" /> Add to Bag
             </Button>
           </motion.div>
         </div>
