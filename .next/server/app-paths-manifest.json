@@ -1,8 +1,8 @@
 {
-  "/checkout/souvenirs/page": "app/checkout/souvenirs/page.js",
-  "/cart/page": "app/cart/page.js",
+  "/fan-shop/page": "app/fan-shop/page.js",
+  "/fan-shop/players/page": "app/fan-shop/players/page.js",
+  "/schedule/page": "app/schedule/page.js",
   "/news/page": "app/news/page.js",
   "/page": "app/page.js",
-  "/fan-shop/[productId]/page": "app/fan-shop/[productId]/page.js",
-  "/fan-shop/page": "app/fan-shop/page.js"
+  "/tickets/page": "app/tickets/page.js"
 }

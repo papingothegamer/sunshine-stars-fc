@@ -7,7 +7,12 @@ import { CartProvider } from "@/components/cart/cart-context"
 import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
-const anton = Anton({ weight: "400", subsets: ["latin"] })
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Sunshine Stars FC",
@@ -20,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.className} ${anton.className}`}>
+    <html lang="en" className={`${inter.className} ${anton.variable}`}>
       <body>
         <CartProvider>
           <Navbar />

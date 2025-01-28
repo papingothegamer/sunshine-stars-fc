@@ -1,12 +1,19 @@
-import type { Metadata } from "next"
-import { FanShopLayout } from "@/components/pages/fan-shop/fan-shop-layout"
-
-export const metadata: Metadata = {
-  title: "Fan Shop | Sunshine Stars FC",
-  description: "Official merchandise and souvenirs for Sunshine Stars Football Club",
-}
+import { ShopHero } from "@/components/pages/fan-shop/shop-hero"
+import { ProductGrid } from "@/components/pages/fan-shop/product-grid"
+import { ShopByPlayer } from "@/components/pages/fan-shop/shop-by-player"
+import { products } from "@/lib/data/products"
 
 export default function FanShopPage() {
-  return <FanShopLayout />
+  const featuredProducts = products.filter((product) => product.featured)
+  const discountedProducts = products.filter((product) => product.discount)
+
+  return (
+    <main>
+      <ShopHero />
+      <ProductGrid products={featuredProducts} title="Featured Products" />
+      <ShopByPlayer />
+      <ProductGrid products={discountedProducts} title="Special Offers" />
+    </main>
+  )
 }
 

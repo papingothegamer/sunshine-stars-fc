@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        anton: ["Anton", "sans-serif"],
+        anton: ["var(--font-anton)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

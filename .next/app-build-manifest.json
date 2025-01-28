@@ -1,21 +1,5 @@
 {
   "pages": {
-    "/club/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/club/page.js"
-    ],
-    "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/tickets/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -26,15 +10,21 @@
       "static/chunks/main-app.js",
       "static/chunks/app/tickets/layout.js"
     ],
-    "/checkout/tickets/page": [
+    "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/checkout/tickets/page.js"
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/schedule/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/schedule/page.js"
+    ],
+    "/club/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/club/page.js"
     ],
     "/matchday/page": [
       "static/chunks/webpack.js",
@@ -51,20 +41,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/fan-shop/page.js"
     ],
-    "/fan-shop/[productId]/page": [
+    "/fan-shop/players/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/fan-shop/[productId]/page.js"
+      "static/chunks/app/fan-shop/players/page.js"
     ],
-    "/cart/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/cart/page.js"
-    ],
-    "/checkout/souvenirs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/checkout/souvenirs/page.js"
+      "static/chunks/app/page.js"
     ]
   }
 }

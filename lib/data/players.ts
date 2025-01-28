@@ -1,4 +1,24 @@
-export const players = [
+// Types
+export interface BasePersonnel {
+  id: number
+  name: string
+  image: string
+}
+
+export interface Player extends BasePersonnel {
+  number: number
+  position: "Goalkeeper" | "Defender" | "Midfielder" | "Forward"
+  normalImage: string
+  hoverImage: string
+  featured?: boolean // For shop display
+}
+
+export interface StaffMember extends BasePersonnel {
+  role: string
+}
+
+// Full squad for club page
+export const fullSquad: Player[] = [
     // Goalkeepers
     {
       id: 1,
@@ -7,6 +27,8 @@ export const players = [
       position: "Goalkeeper",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 2,
@@ -15,6 +37,8 @@ export const players = [
       position: "Goalkeeper",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 3,
@@ -23,6 +47,8 @@ export const players = [
       position: "Goalkeeper",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
   
     // Defenders
@@ -33,6 +59,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 5,
@@ -41,6 +69,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 6,
@@ -49,6 +79,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 7,
@@ -57,6 +89,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 8,
@@ -65,6 +99,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 9,
@@ -73,6 +109,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 10,
@@ -81,6 +119,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 11,
@@ -89,6 +129,8 @@ export const players = [
       position: "Defender",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
   
     // Midfielders
@@ -99,6 +141,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 13,
@@ -107,6 +151,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 14,
@@ -115,6 +161,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 15,
@@ -123,6 +171,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 16,
@@ -131,6 +181,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 17,
@@ -139,6 +191,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 18,
@@ -147,6 +201,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 19,
@@ -155,6 +211,8 @@ export const players = [
       position: "Midfielder",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
   
     // Forwards
@@ -165,6 +223,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 21,
@@ -173,6 +233,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 22,
@@ -181,6 +243,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: true,
     },
     {
       id: 23,
@@ -189,6 +253,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 24,
@@ -197,6 +263,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 25,
@@ -205,6 +273,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 26,
@@ -213,6 +283,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 27,
@@ -221,6 +293,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 28,
@@ -229,6 +303,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 29,
@@ -237,6 +313,8 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
     {
       id: 30,
@@ -245,8 +323,42 @@ export const players = [
       position: "Forward",
       normalImage: "/placeholder.svg",
       hoverImage: "/placeholder.svg",
+      image: "/placeholder.svg",
+      featured: false,
     },
-  ]
+  ] as const
+
+// Selected 11 players for shop display
+export const shopPlayers: Player[] = fullSquad.filter((player) => {
+  const featuredPositions = {
+    Goalkeeper: 1,
+    Defender: 4,
+    Midfielder: 3,
+    Forward: 3,
+  }
+
+  const selectedByPosition = fullSquad
+    .filter((p) => p.position === player.position && p.featured)
+    .slice(0, featuredPositions[player.position])
+
+  return selectedByPosition.some((p) => p.id === player.id)
+})
+
+// Helper function to get players by position
+export const getPlayersByPosition = (players: Player[] = fullSquad) => {
+  return players.reduce(
+    (acc, player) => {
+      const position = player.position
+      if (!acc[position]) {
+        acc[position] = []
+      }
+      acc[position].push(player)
+      return acc
+    },
+    {} as Record<string, Player[]>,
+  )
+}
+
   
   export const technicalTeam = [
     { id: 1, name: "Dr. Ademola Adesina", role: "Team Doctor", image: "/placeholder.svg" },
@@ -265,4 +377,35 @@ export const players = [
     { id: 3, name: "Nnamdi Onubogu", role: "Goalkeeper Coach", image: "/placeholder.svg" },
   ]
   
-  
+ // Helper function to get featured players for a specific position
+export const getFeaturedPlayersByPosition = (position: Player["position"]) => {
+  return shopPlayers.filter((player) => player.position === position)
+}
+
+// Helper function to get all featured players
+export const getAllFeaturedPlayers = () => shopPlayers
+
+// Update product creation to use the new player interface
+export const createPlayerKit = (player: Player) => ({
+  id: `home-kit-2025-${player.id}`,
+  name: `Sunshine Stars Home Jersey 2024/25 with ${player.name} ${player.number} printing`,
+  description: `Official Sunshine Stars FC home kit for the 2024/25 season featuring ${player.name}'s name and number ${player.number}.`,
+  price: 15000,
+  originalPrice: 20000,
+  discount: 30,
+  image: player.normalImage,
+  category: "kits" as const,
+  subCategory: "player",
+  sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+  inStock: true,
+  isCustomizable: false,
+  playerOptions: [
+    {
+      player,
+      price: 15000,
+    },
+  ],
+})
+
+export { fullSquad as players }
+

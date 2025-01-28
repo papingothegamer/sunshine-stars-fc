@@ -1,61 +1,152 @@
+import type { Player } from "./players"
+
 export interface Product {
-    id: string
-    name: string
-    description: string
+  id: string
+  name: string
+  description: string
+  price: number
+  originalPrice?: number
+  discount?: number
+  image: string
+  category: "kits" | "training" | "lifestyle" | "accessories"
+  subCategory?: string
+  sizes?: string[]
+  inStock: boolean
+  isCustomizable?: boolean
+  featured?: boolean
+  playerOptions?: {
+    player: PlayerType
     price: number
-    image: string
-    category: "apparel" | "kit" | "souvenir"
+  }[]
+}
+
+export const products: Product[] = [
+  {
+    id: "home-kit-2025",
+    name: "Sunshine Stars Home Kit 2024/25",
+    description:
+      "Official Sunshine Stars FC home kit for the 2024/25 season. Features the club crest and sponsor logos. Made with sustainable materials for maximum comfort and performance.",
+    price: 15000,
+    originalPrice: 20000,
+    discount: 30,
+    image:
+      "",
+    category: "kits",
+    subCategory: "home",
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    inStock: true,
+    isCustomizable: true,
+    featured: true,
+  },
+  {
+    id: "away-kit-2025",
+    name: "Sunshine Stars Away Kit 2024/25",
+    description:
+      "Official Sunshine Stars FC away kit for the 2024/25 season. Bold design that represents our club's heritage.",
+    price: 15000,
+    originalPrice: 20000,
+    discount: 30,
+    image: "/placeholder.svg",
+    category: "kits",
+    subCategory: "away",
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    inStock: true,
+    isCustomizable: true,
+  },
+  {
+    id: "training-jacket-2025",
+    name: "Sunshine Stars Training Jacket",
+    description: "Official training jacket worn by the team. Perfect for training sessions and casual wear.",
+    price: 12000,
+    image: "/placeholder.svg",
+    category: "training",
+    sizes: ["S", "M", "L", "XL", "2XL"],
+    inStock: true,
+  },
+  {
+    id: "lifestyle-tee",
+    name: "Sunshine Stars Lifestyle T-Shirt",
+    description: "Casual t-shirt featuring the Sunshine Stars logo. Perfect for everyday wear.",
+    price: 5000,
+    image: "/placeholder.svg",
+    category: "lifestyle",
+    sizes: ["S", "M", "L", "XL", "2XL"],
+    inStock: true,
+  },
+  {
+    id: "scarf-2025",
+    name: "Sunshine Stars Supporter Scarf",
+    description: "Show your support with this official club scarf featuring team colors and crest.",
+    price: 3000,
+    originalPrice: 4000,
+    discount: 25,
+    image:
+      "",
+    category: "accessories",
+    inStock: true,
+  },
+]
+
+export const createPlayerKit = (player: PlayerType): Product => {
+  return {
+    id: `home-kit-2025-${player.id}`,
+    name: `Sunshine Stars Home Jersey 2024/25 with ${player.name} ${player.number} printing`,
+    description: `Official Sunshine Stars FC home kit for the 2024/25 season featuring ${player.name}'s name and number ${player.number}.`,
+    price: 15000,
+    originalPrice: 20000,
+    discount: 30,
+    image: "/placeholder.svg",
+    category: "kits",
+    subCategory: "player",
+    sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    inStock: true,
+    isCustomizable: false,
+    playerOptions: [
+      {
+        player,
+        price: 15000,
+      },
+    ],
   }
-  
-  export const products: Product[] = [
-    {
-      id: "1",
-      name: "Home Kit 2025",
-      description: "Official Sunshine Stars FC home kit for the 2025 season.",
-      price: 59.99,
-      image: "/placeholder.svg",
-      category: "kit",
-    },
-    {
-      id: "2",
-      name: "Away Kit 2025",
-      description: "Official Sunshine Stars FC away kit for the 2025 season.",
-      price: 59.99,
-      image: "/placeholder.svg",
-      category: "kit",
-    },
-    {
-      id: "3",
-      name: "Sunshine Stars FC Scarf",
-      description: "Show your support with this official club scarf.",
-      price: 19.99,
-      image: "/placeholder.svg",
-      category: "apparel",
-    },
-    {
-      id: "4",
-      name: "Sunshine Stars FC Cap",
-      description: "Stylish cap featuring the club logo.",
-      price: 24.99,
-      image: "/placeholder.svg",
-      category: "apparel",
-    },
-    {
-      id: "5",
-      name: "Miniature Football",
-      description: "Collectible miniature football with club colors and logo.",
-      price: 14.99,
-      image: "/placeholder.svg",
-      category: "souvenir",
-    },
-    {
-      id: "6",
-      name: "Sunshine Stars FC Mug",
-      description: "Start your day with a cup of coffee in this official club mug.",
-      price: 12.99,
-      image: "/placeholder.svg",
-      category: "souvenir",
-    },
-  ]
-  
-  
+}
+
+export interface PlayerType {
+  id: number
+  name: string
+  number: number
+  position: string
+  image: string
+  normalImage: string
+  hoverImage: string
+}
+
+export const players: PlayerType[] = [
+  {
+    id: 1,
+    name: "Samuel Adeniji",
+    number: 10,
+    position: "Forward",
+    image: "/placeholder.svg",
+    normalImage: "/placeholder.svg",
+    hoverImage: "/placeholder.svg",
+  },
+  {
+    id: 2,
+    name: "Kehinde Adedipe",
+    number: 8,
+    position: "Midfielder",
+    image: "/placeholder.svg",
+    normalImage: "/placeholder.svg",
+    hoverImage: "/placeholder.svg",
+  },
+  {
+    id: 3,
+    name: "Sunday Abiodun",
+    number: 4,
+    position: "Defender",
+    image: "/placeholder.svg",
+    normalImage: "/placeholder.svg",
+    hoverImage: "/placeholder.svg",
+  },
+]
+
