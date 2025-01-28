@@ -7,7 +7,6 @@ import { Megaphone } from "lucide-react"
 export function TicketingHeader() {
   const categories = [
     { href: "/tickets/mens", label: "Men's" },
-    { href: "/tickets/womens", label: "Women's" },
     { href: "/tickets/academy", label: "Academy" },
     { href: "/tickets/events", label: "Events" },
   ]

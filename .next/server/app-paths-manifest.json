@@ -1,8 +1,7 @@
 {
-  "/fan-shop/page": "app/fan-shop/page.js",
   "/fan-shop/players/page": "app/fan-shop/players/page.js",
-  "/schedule/page": "app/schedule/page.js",
-  "/news/page": "app/news/page.js",
   "/page": "app/page.js",
+  "/schedule/page": "app/schedule/page.js",
+  "/club/page": "app/club/page.js",
   "/tickets/page": "app/tickets/page.js"
 }
