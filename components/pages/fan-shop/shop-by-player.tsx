@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { players } from "@/lib/data/players"
+import { shopPlayers as players } from "@/lib/data/players"
 
 export function ShopByPlayer() {
   const featuredPlayer = players[0] // First player as featured
@@ -19,7 +19,7 @@ export function ShopByPlayer() {
               star players and show your support.
             </p>
             <Link href="/fan-shop/players">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 mt-4">
                 SHOP ALL PLAYERS
               </Button>
             </Link>
@@ -31,7 +31,11 @@ export function ShopByPlayer() {
             className="relative aspect-[3/4] bg-gradient-to-br from-secondary to-primary/10 rounded-lg overflow-hidden"
           >
             <div className="absolute inset-0 flex items-center justify-center">
-              <img src="/placeholder.svg" alt={`${featuredPlayer.name} Kit`} className="w-full h-full object-contain" />
+              <img
+                src={featuredPlayer.image || "/placeholder.svg"}
+                alt={`${featuredPlayer.name} Kit`}
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-secondary to-transparent h-1/3" />
             <div className="absolute bottom-4 left-4">

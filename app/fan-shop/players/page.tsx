@@ -1,21 +1,37 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { players, getPlayersByPosition } from "@/lib/data/players"
+import { 
+  shopPlayers as players, 
+  getFeaturedPlayersByPosition, 
+  getAllFeaturedPlayers, 
+  Player,
+  type Player as PlayerType 
+} from "@/lib/data/players"
 import { createPlayerKit } from "@/lib/data/products"
 import { ProductCard } from "@/components/pages/fan-shop/product-card"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { ArrowLeft } from "lucide-react"
 
 export default function ShopByPlayerPage() {
   const [activePosition, setActivePosition] = useState<string>("all")
   const [activeTeam, setActiveTeam] = useState<string>("mens")
 
-  const playersByPosition = getPlayersByPosition()
+  const playersByPosition: Record<string, PlayerType[]> = {
+    Goalkeeper: getFeaturedPlayersByPosition("Goalkeeper"),
+    Defender: getFeaturedPlayersByPosition("Defender"),
+    Midfielder: getFeaturedPlayersByPosition("Midfielder"),
+    Forward: getFeaturedPlayersByPosition("Forward")
+  }
+  
   const positions = ["all", ...Object.keys(playersByPosition)]
 
-  const filteredPlayers = activePosition === "all" ? players : playersByPosition[activePosition] || []
+  const filteredPlayers: PlayerType[] = activePosition === "all" 
+    ? getAllFeaturedPlayers() 
+    : (playersByPosition[activePosition] ?? [])
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,10 +47,12 @@ export default function ShopByPlayerPage() {
                 MEN'S TEAM
               </Button>
             </div>
-            <div className="flex gap-4">
-              <Button variant="ghost">FILTER</Button>
-              <Button variant="ghost">SORT</Button>
-            </div>
+            <Link href="/fan-shop">
+              <Button variant="ghost" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Fan Shop
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -54,14 +72,18 @@ export default function ShopByPlayerPage() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredPlayers.map((player, index) => (
+          {filteredPlayers.map((player: PlayerType, index: number) => (
             <motion.div
               key={player.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <ProductCard product={createPlayerKit(player)} index={index} />
+              <ProductCard
+                product={createPlayerKit(player)}
+                index={index}
+                href={`/fan-shop/player-kit/home-kit-2025-${player.id}`}
+              />
             </motion.div>
           ))}
         </div>

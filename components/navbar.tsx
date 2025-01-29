@@ -6,20 +6,16 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, ShoppingBag } from "lucide-react"
 import { useState, useEffect } from "react"
-import { useMediaQuery } from "react-responsive"
 import { useCart } from "@/components/cart/cart-context"
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" })
+  const [isMounted, setIsMounted] = useState(false)
   const { cartItems } = useCart()
 
-  // Close mobile menu when switching to desktop view
   useEffect(() => {
-    if (!isMobile) {
-      setIsMobileMenuOpen(false)
-    }
-  }, [isMobile])
+    setIsMounted(true)
+  }, [])
 
   const menuItems = [
     { href: "/tickets", label: "Tickets" },
@@ -31,7 +27,7 @@ export function Navbar() {
   ]
 
   const handleLinkClick = () => {
-    if (isMobile) {
+    if (isMounted && window.innerWidth <= 768) {
       setIsMobileMenuOpen(false)
     }
   }
@@ -65,15 +61,13 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        {!isMobile && (
-          <nav className="hidden md:flex items-center justify-center flex-1">
-            <NavItems />
-          </nav>
-        )}
+        <nav className="hidden md:flex items-center justify-center flex-1">
+          <NavItems />
+        </nav>
 
         {/* Mobile Menu and Cart */}
         <div className="flex items-center space-x-4">
-          {isMobile && (
+          {isMounted && window.innerWidth <= 768 && (
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">

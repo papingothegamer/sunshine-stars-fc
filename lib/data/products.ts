@@ -1,4 +1,4 @@
-import type { Player } from "./players"
+import { Player as PlayerType } from './players'
 
 export interface Product {
   id: string
@@ -15,9 +15,10 @@ export interface Product {
   isCustomizable?: boolean
   featured?: boolean
   playerOptions?: {
-    player: PlayerType
+    player: Player
     price: number
   }[]
+  selectedSize?: string
 }
 
 export const products: Product[] = [
@@ -30,7 +31,7 @@ export const products: Product[] = [
     originalPrice: 20000,
     discount: 30,
     image:
-      "",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-28%20at%2001.33.43-pEKyzK43IfQnUyrk7K7Kl2QTcu26eh.png",
     category: "kits",
     subCategory: "home",
     sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
@@ -81,13 +82,13 @@ export const products: Product[] = [
     originalPrice: 4000,
     discount: 25,
     image:
-      "",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-28%20at%2001.38.12-hPx3wytAbAHt9enKiNzBDzezzFbaak.png",
     category: "accessories",
     inStock: true,
   },
 ]
 
-export const createPlayerKit = (player: PlayerType): Product => {
+export const createPlayerKit = (player: Player): Product => {
   return {
     id: `home-kit-2025-${player.id}`,
     name: `Sunshine Stars Home Jersey 2024/25 with ${player.name} ${player.number} printing`,
@@ -110,7 +111,7 @@ export const createPlayerKit = (player: PlayerType): Product => {
   }
 }
 
-export interface PlayerType {
+export interface Player {
   id: number
   name: string
   number: number
@@ -120,7 +121,7 @@ export interface PlayerType {
   hoverImage: string
 }
 
-export const players: PlayerType[] = [
+export const players: Player[] = [
   {
     id: 1,
     name: "Samuel Adeniji",
