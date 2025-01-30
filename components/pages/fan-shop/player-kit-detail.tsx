@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { useToast } from "@/components/ui/use-toast"
 import { useCart } from "@/components/cart/cart-context"
-import { Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react"
+import { Minus, Plus, ShoppingCart, ArrowLeft } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import type { Player } from "@/lib/data/players"
 import { createPlayerKit } from "@/lib/data/products"
@@ -32,7 +32,7 @@ export function PlayerKitDetail({ player }: PlayerKitDetailProps) {
       })
       return
     }
-    addToCart({ ...product, sizes: selectedSize ? [selectedSize] : undefined }, quantity)
+    addToCart({ ...product, selectedSize }, quantity)
     toast({
       title: "Added to cart",
       description: `${quantity} ${quantity === 1 ? "item" : "items"} of ${product.name} added to your cart.`,
@@ -100,7 +100,7 @@ export function PlayerKitDetail({ player }: PlayerKitDetailProps) {
               </Button>
             </div>
             <Button onClick={handleAddToCart} className="w-full" size="lg">
-              <ShoppingBag className="mr-2 h-5 w-5" /> Add to Bag
+              <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
             </Button>
           </motion.div>
         </div>

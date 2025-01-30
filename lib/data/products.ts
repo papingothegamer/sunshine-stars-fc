@@ -31,7 +31,7 @@ export const products: Product[] = [
     originalPrice: 20000,
     discount: 30,
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-28%20at%2001.33.43-pEKyzK43IfQnUyrk7K7Kl2QTcu26eh.png",
+      "/placeholder.svg",
     category: "kits",
     subCategory: "home",
     sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
@@ -82,7 +82,7 @@ export const products: Product[] = [
     originalPrice: 4000,
     discount: 25,
     image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-28%20at%2001.38.12-hPx3wytAbAHt9enKiNzBDzezzFbaak.png",
+      "/placeholder.svg",
     category: "accessories",
     inStock: true,
   },

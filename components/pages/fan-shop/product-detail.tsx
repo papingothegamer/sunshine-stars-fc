@@ -121,7 +121,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link href={`/fan-shop/product/${relatedProduct.id}`}>
+                <Link href={`/fan-shop/products/${relatedProduct.id}`}>
                   <Card className="overflow-hidden hover:shadow-lg transition-shadow">
                     <CardContent className="p-0">
                       <img

@@ -20,7 +20,7 @@ export function PlayersView() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
         >
-          <h2 className="text-2xl font-bold mb-6">{position}s</h2>
+          <h2 className="text-2xl font-bold mb-6 text-white/90">{position}s</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {players.map((player) => (
               <PlayerCard key={player.id} player={player} />
