@@ -22,7 +22,7 @@ export function StadiumAddress() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-      <Card className="text-center">
+      <Card className="text-center bg-white/80 backdrop-blur-sm border-primary/20">
         <CardHeader>
           <CardTitle className="flex items-center justify-center gap-2">
             <MapPin className="h-5 w-5 text-primary" />
@@ -30,12 +30,20 @@ export function StadiumAddress() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">{address}</p>
+          <p className="mb-4 text-lg">{address}</p>
           <div className="flex flex-col sm:flex-row gap-2 justify-center">
-            <Button onClick={openGoogleMaps} variant="outline">
+            <Button
+              onClick={openGoogleMaps}
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
+            >
               Open in Google Maps
             </Button>
-            <Button onClick={openAppleMaps} variant="outline">
+            <Button
+              onClick={openAppleMaps}
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
+            >
               Open in Apple Maps
             </Button>
           </div>

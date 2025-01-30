@@ -39,8 +39,8 @@ export function ShopByPlayer() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-secondary to-transparent h-1/3" />
             <div className="absolute bottom-4 left-4">
-              <p className="text-2xl font-bold">{featuredPlayer.name}</p>
-              <p className="text-white/80">#{featuredPlayer.number}</p>
+              <p className="text-2xl font-bold font-anton">{featuredPlayer.name}</p>
+              <p className="text-white/80 font-anton">#{featuredPlayer.number}</p>
             </div>
           </motion.div>
         </div>

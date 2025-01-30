@@ -36,7 +36,7 @@ export function MatchdayInfo() {
       transition={{ delay: 0.1 }}
       className="space-y-6"
     >
-      <h2 className="text-2xl font-bold">Essential Information</h2>
+      <h2 className="text-3xl font-bold text-center mb-8">Essential Information</h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {infoCards.map((card, index) => (
           <motion.div
@@ -45,7 +45,7 @@ export function MatchdayInfo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="h-full">
+            <Card className="h-full bg-white/80 backdrop-blur-sm border-primary/20 hover:border-primary transition-colors">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <card.icon className="h-5 w-5 text-primary" />

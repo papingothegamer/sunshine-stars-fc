@@ -1,15 +1,20 @@
 {
   "pages": {
-    "/fan-shop/categories/kits/page": [
+    "/fan-shop/products/[productId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/fan-shop/categories/kits/page.js"
+      "static/chunks/app/fan-shop/products/[productId]/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/fan-shop/all-products/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/fan-shop/all-products/page.js"
     ],
     "/fan-shop/page": [
       "static/chunks/webpack.js",
@@ -26,15 +31,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/fan-shop/player-kit/[productId]/page.js"
     ],
-    "/fan-shop/products/[productId]/page": [
+    "/cart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/fan-shop/products/[productId]/page.js"
+      "static/chunks/app/cart/page.js"
     ],
-    "/fan-shop/all-products/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/fan-shop/all-products/page.js"
+      "static/chunks/app/page.js"
+    ],
+    "/matchday/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/matchday/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
