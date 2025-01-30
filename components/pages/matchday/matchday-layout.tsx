@@ -22,8 +22,8 @@ export function MatchdayLayout() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10">
-      <div className="absolute inset-0 bg-[url('/stadium-pattern.svg')] bg-repeat opacity-5" />
+    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10 ">
+      <div className="absolute inset-0 bg-[url('/media/img/stadium-pattern.svg')] bg-repeat opacity-5" />
       <div className="relative">
         <OurStadium scale={scale} />
         <main className="container mx-auto px-4 py-12">

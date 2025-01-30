@@ -1,8 +1,10 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/fan-shop/player-kit/[productId]/page": "app/fan-shop/player-kit/[productId]/page.js",
-  "/fan-shop/players/page": "app/fan-shop/players/page.js",
+  "/fan-shop/page": "app/fan-shop/page.js",
+  "/schedule/page": "app/schedule/page.js",
   "/matchday/page": "app/matchday/page.js",
-  "/page": "app/page.js",
-  "/cart/page": "app/cart/page.js"
+  "/fan-shop/products/[productId]/page": "app/fan-shop/products/[productId]/page.js",
+  "/fan-shop/categories/lifestyle/page": "app/fan-shop/categories/lifestyle/page.js",
+  "/fan-shop/players/page": "app/fan-shop/players/page.js",
+  "/news/page": "app/news/page.js",
+  "/fan-shop/all-products/page": "app/fan-shop/all-products/page.js"
 }
