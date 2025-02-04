@@ -28,7 +28,7 @@ export function ShopHero() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="relative">
-            <img src="/placeholder.svg" alt="Sunshine Stars FC Home Kit" className="w-full h-auto" />
+            <img src="media/img/club/kits/SS-Home 2.webp" alt="Sunshine Stars FC Home Kit" className="w-full h-auto" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/50 to-transparent" />
           </motion.div>
         </div>
