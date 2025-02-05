@@ -1564,6 +1564,12 @@ video {
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
+.bg-opacity-30 {
+  --tw-bg-opacity: 0.3;
+}
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
+}
 .bg-\[linear-gradient\(45deg\2c transparent_25\%\2c rgba\(255\2c 136\2c 0\2c 0\.1\)_25\%\2c rgba\(255\2c 136\2c 0\2c 0\.1\)_50\%\2c transparent_50\%\2c transparent_75\%\2c rgba\(255\2c 136\2c 0\2c 0\.1\)_75\%\)\] {
   background-image: linear-gradient(45deg,transparent 25%,rgba(255,136,0,0.1) 25%,rgba(255,136,0,0.1) 50%,transparent 50%,transparent 75%,rgba(255,136,0,0.1) 75%);
 }

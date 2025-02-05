@@ -22,11 +22,11 @@ export function OurStadium({ scale }: { scale: number }) {
       <motion.div
         style={{
           scale: combinedScale,
-          backgroundImage: "url('/placeholder.svg')", // Replace with actual stadium image
+          backgroundImage: "url('/media/img/club/stadium/FY3CPb6XEAAcnTq.jpeg')", // Replace with actual stadium image
         }}
         className="absolute inset-0 bg-cover bg-center"
       />
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
+      <div className="absolute inset-0 bg-black bg-opacity-20" />
       <motion.div
         style={{ opacity }}
         className="absolute inset-0 flex flex-col justify-center items-center text-white p-8"

@@ -6,8 +6,8 @@ export function MatchdayHero() {
   return (
     <div className="relative h-[50vh] min-h-[400px] overflow-hidden">
       <img
-        src="/placeholder.svg"
-        alt="Crowd at Sunshine Stars match"
+        src="/media/img/club/stadium/FY3CPbtXEAEl9vH.jpg"
+        alt="Sunshine Stars Stadium Aerial View"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black bg-opacity-50" />

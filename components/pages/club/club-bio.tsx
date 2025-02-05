@@ -25,14 +25,14 @@ export function ClubBio() {
       transition={{ delay: 0.2 }}
       className="space-y-12"
     >
-      <h2 className="text-3xl font-bold text-center mb-8">About Sunshine Stars FC</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-white">About Sunshine Stars FC</h2>
       <AspectRatio ratio={16 / 9} className="mb-8">
-        <Image src="/placeholder.svg" alt="Sunshine Stars FC Stadium" layout="fill" objectFit="cover" priority />
+        <Image src="/media/img/club/stadium/66698a49a0d41.jpg" alt="Sunshine Stars FC Stadium" layout="fill" objectFit="cover" priority />
       </AspectRatio>
       <Card className="overflow-hidden">
         <CardContent className="p-0">
           <div className="relative h-[50vh]">
-            <Image src="/placeholder.svg" alt="Sunshine Stars FC Stadium" layout="fill" objectFit="cover" />
+            <Image src="https://cdn.punchng.com/wp-content/uploads/2023/08/30090536/Sunshine-Stars.jpg" alt="Sunshine Stars FC " layout="fill" objectFit="cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 text-white">
               <h2 className="text-3xl font-bold mb-2">Our History</h2>
@@ -82,7 +82,7 @@ export function ClubBio() {
               and beyond.
             </p>
             <div className="relative h-64">
-              <Image src="/placeholder.svg" alt="Community Engagement" layout="fill" objectFit="cover" />
+              <Image src="https://www.telecomasia.net/upload/iblock/761/761253ba06e6bea8ada2faf5b7716177.jpg" alt="Community Engagement" layout="fill" objectFit="cover" />
             </div>
           </div>
         </CardContent>
@@ -100,7 +100,7 @@ export function ClubBio() {
               className="relative aspect-square overflow-hidden"
             >
               <Image
-                src="/placeholder.svg"
+                src="https://en.africatopsports.com/wp-content/uploads/2022/04/FQ3GEbzXoAINGVp.jpeg"
                 alt={`Sunshine Stars FC Gallery ${index}`}
                 layout="fill"
                 objectFit="cover"

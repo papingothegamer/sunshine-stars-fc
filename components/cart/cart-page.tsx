@@ -39,7 +39,7 @@ export function CartPage() {
                       />
                       <div className="flex-grow">
                         <h3 className="font-semibold">{item.name}</h3>
-                        <p className="text-sm text-muted-foreground">£{item.price.toFixed(2)}</p>
+                        <p className="text-sm text-muted-foreground">₦{item.price.toFixed(2)}</p>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Button
@@ -73,7 +73,7 @@ export function CartPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
-                      <span>£{totalPrice.toFixed(2)}</span>
+                      <span>₦{totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping</span>
@@ -82,7 +82,7 @@ export function CartPage() {
                     <div className="border-t pt-2 mt-2">
                       <div className="flex justify-between font-semibold">
                         <span>Total</span>
-                        <span>£{totalPrice.toFixed(2)}</span>
+                        <span>₦{totalPrice.toFixed(2)}</span>
                       </div>
                     </div>
                   </div>

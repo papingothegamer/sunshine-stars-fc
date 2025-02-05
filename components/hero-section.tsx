@@ -20,7 +20,7 @@ export function HeroSection() {
   return (
     <div className="relative h-screen overflow-hidden">
       <motion.div
-        style={{ y, backgroundImage: "url('/placeholder.svg')" }}
+        style={{ y, backgroundImage: "url('https://brilanet.s3.amazonaws.com/wp-content/uploads/2019/12/26084719/dayo-ojo-sunshine-stars-mfm_1gk65lojfhcmn1076s1lnfjnf1.jpg')" }}
         className="absolute inset-0 bg-cover bg-center"
       />
       <div

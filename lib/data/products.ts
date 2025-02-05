@@ -74,7 +74,7 @@ export const products: Product[] = [
     name: "Sunshine Stars Training Jacket",
     description: "Official training jacket worn by the team. Perfect for training sessions and casual wear.",
     price: 12000,
-    image: "/placeholder.svg",
+    image: "/media/img/misc/fan-shop/training/preview-2025-02-05T18_01_41.755Z.png",
     category: "training",
     sizes: ["S", "M", "L", "XL", "2XL"],
     inStock: true,

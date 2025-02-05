@@ -11,8 +11,8 @@ export default function FanShopPage() {
   const discountedProducts = products.filter((product) => product.discount)
 
   const categories = [
-    { name: "Kits", image: "/placeholder.svg", href: "/fan-shop/categories/kits" },
-    { name: "Training", image: "/placeholder.svg", href: "/fan-shop/categories/training" },
+    { name: "Kits", image: "/media/img/misc/fan-shop/kits/2425 kit.png", href: "/fan-shop/categories/kits" },
+    { name: "Training", image: "/media/img/misc/fan-shop/training/preview-2025-02-05T18_01_41.755Z.png", href: "/fan-shop/categories/training" },
     { name: "Lifestyle", image: "/placeholder.svg", href: "/fan-shop/categories/lifestyle" },
     { name: "Accessories", image: "/placeholder.svg", href: "/fan-shop/categories/accessories" },
   ]
