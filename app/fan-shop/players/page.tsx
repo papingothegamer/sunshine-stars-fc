@@ -38,13 +38,6 @@ export default function ShopByPlayerPage() {
               >
                 MEN'S TEAM
               </Button>
-              <Button
-                variant={activeTeam === "womens" ? "default" : "ghost"}
-                onClick={() => setActiveTeam("womens")}
-                className="text-lg font-bold"
-              >
-                WOMEN'S TEAM
-              </Button>
             </div>
             <Link href="/fan-shop">
               <Button variant="ghost" className="flex items-center gap-2">

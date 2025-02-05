@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useRouter } from "next/navigation"
 import type { Product } from "@/lib/data/products"
+import Image from "next/image"
 
 interface ProductCardProps {
   product: Product
@@ -21,6 +22,13 @@ export function ProductCard({ product, index, href }: ProductCardProps) {
     }
   }
 
+  // Determine the image to display
+  const displayImage =
+    product.playerOptions?.[0]?.player.shirtImage ||
+    product.playerOptions?.[0]?.player.normalImage ||
+    product.image ||
+    "/placeholder.svg"
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -32,9 +40,11 @@ export function ProductCard({ product, index, href }: ProductCardProps) {
       <Card className="overflow-hidden group">
         <CardContent className="p-0">
           <div className="relative">
-            <img
-              src={product.image || "/placeholder.svg"}
+            <Image
+              src={displayImage || "/placeholder.svg"}
               alt={product.name}
+              width={300}
+              height={300}
               className="w-full aspect-square object-cover transition-transform group-hover:scale-105"
             />
             {product.discount && (

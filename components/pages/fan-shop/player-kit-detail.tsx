@@ -11,6 +11,7 @@ import { Minus, Plus, ShoppingCart, ArrowLeft } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import type { Player } from "@/lib/data/players"
 import { createPlayerKit } from "@/lib/data/products"
+import Image from "next/image"
 
 interface PlayerKitDetailProps {
   player: Player
@@ -48,9 +49,11 @@ export function PlayerKitDetail({ player }: PlayerKitDetailProps) {
         </Link>
         <div className="grid gap-8 md:grid-cols-2">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-            <img
-              src={player.image || "/placeholder.svg"}
+            <Image
+              src={player.shirtImage || player.normalImage || player.image || "/placeholder.svg"}
               alt={player.name}
+              width={500}
+              height={500}
               className="w-full h-auto object-cover rounded-lg shadow-lg"
             />
           </motion.div>
@@ -68,23 +71,25 @@ export function PlayerKitDetail({ player }: PlayerKitDetailProps) {
               )}
             </div>
             <p className="text-muted-foreground">{product.description}</p>
-            <div>
-              <label htmlFor="size-select" className="block text-sm font-medium text-gray-700 mb-2">
-                Size
-              </label>
-              <Select value={selectedSize} onValueChange={setSelectedSize}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a size" />
-                </SelectTrigger>
-                <SelectContent>
-                  {product.sizes?.map((size) => (
-                    <SelectItem key={size} value={size}>
-                      {size}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+            {product.sizes && (
+              <div>
+                <label htmlFor="size-select" className="block text-sm font-medium text-gray-700 mb-2">
+                  Size
+                </label>
+                <Select value={selectedSize} onValueChange={setSelectedSize}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a size" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {product.sizes.map((size) => (
+                      <SelectItem key={size} value={size}>
+                        {size}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
             <div className="flex items-center space-x-4">
               <Button
                 variant="outline"
@@ -120,6 +125,18 @@ export function PlayerKitDetail({ player }: PlayerKitDetailProps) {
                 <div>
                   <p className="text-sm text-muted-foreground">Position</p>
                   <p className="font-semibold">{player.position}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Player Image</p>
+                  <div className="mt-2">
+                    <Image
+                      src={player.image || "/placeholder.svg"}
+                      alt={player.name}
+                      width={100}
+                      height={100}
+                      className="rounded-full"
+                    />
+                  </div>
                 </div>
               </div>
             </CardContent>

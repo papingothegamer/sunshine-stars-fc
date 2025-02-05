@@ -32,7 +32,7 @@ export function ShopByPlayer() {
           >
             <div className="absolute inset-0 flex items-center justify-center">
               <img
-                src={featuredPlayer.image || "/placeholder.svg"}
+                src={featuredPlayer.shirtImage || "/placeholder.svg"}
                 alt={`${featuredPlayer.name} Kit`}
                 className="w-full h-full object-contain"
               />
