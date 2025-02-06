@@ -17,7 +17,11 @@ const anton = Anton({
 export const metadata: Metadata = {
   title: "Sunshine Stars FC",
   description: "Official website of Sunshine Stars Football Club",
+  icons: {
+    icon: '/media/img/icons/badge2.ico',
+  },
 }
+
 
 export default function RootLayout({
   children,
