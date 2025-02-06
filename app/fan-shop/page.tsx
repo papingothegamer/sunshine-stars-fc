@@ -13,8 +13,8 @@ export default function FanShopPage() {
   const categories = [
     { name: "Kits", image: "/media/img/misc/fan-shop/kits/2425 kit.png", href: "/fan-shop/categories/kits" },
     { name: "Training", image: "/media/img/misc/fan-shop/training/preview-2025-02-05T18_01_41.755Z.png", href: "/fan-shop/categories/training" },
-    { name: "Lifestyle", image: "/placeholder.svg", href: "/fan-shop/categories/lifestyle" },
-    { name: "Accessories", image: "/placeholder.svg", href: "/fan-shop/categories/accessories" },
+    { name: "Lifestyle", image: "/media/img/misc/fan-shop/lifestyle/mockup.webp", href: "/fan-shop/categories/lifestyle" },
+    { name: "Accessories", image: "/media/img/misc/fan-shop/accessories/Bucket Hat Mockup.webp", href: "/fan-shop/categories/accessories" },
   ]
 
   return (

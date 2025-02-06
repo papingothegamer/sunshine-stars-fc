@@ -32,7 +32,7 @@ export function ClubBio() {
       <Card className="overflow-hidden">
         <CardContent className="p-0">
           <div className="relative h-[50vh]">
-            <Image src="https://cdn.punchng.com/wp-content/uploads/2023/08/30090536/Sunshine-Stars.jpg" alt="Sunshine Stars FC " layout="fill" objectFit="cover" />
+            <Image src="/media/img/club/media/img/plain-sports-fabric.webp" alt="Sunshine Stars FC " layout="fill" objectFit="cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 text-white">
               <h2 className="text-3xl font-bold mb-2">Our History</h2>

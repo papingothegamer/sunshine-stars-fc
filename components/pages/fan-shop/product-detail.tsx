@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { products, Product } from "@/lib/data/products"
+import { products } from "@/lib/data/products"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
@@ -37,7 +37,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
       })
       return
     }
-    addToCart({ ...product, sizes: selectedSize ? [selectedSize] : undefined }, quantity)
+    addToCart({ ...product, selectedSize }, quantity)
     toast({
       title: "Added to cart",
       description: `${quantity} ${quantity === 1 ? "item" : "items"} of ${product.name} added to your cart.`,
@@ -45,8 +45,8 @@ export function ProductDetail({ productId }: ProductDetailProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-background pb-24">
+      <div className="container mx-auto px-4 py-12">
         <Link href="/fan-shop/all-products" className="inline-flex items-center mb-6 text-primary hover:underline">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to All Products
@@ -79,7 +79,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
                   Size
                 </label>
                 <Select value={selectedSize} onValueChange={setSelectedSize}>
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-1/4">
                     <SelectValue placeholder="Select a size" />
                   </SelectTrigger>
                   <SelectContent>
@@ -106,13 +106,38 @@ export function ProductDetail({ productId }: ProductDetailProps) {
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
-            <Button onClick={handleAddToCart} className="w-full" size="sm">
+            <Button onClick={handleAddToCart} className="w-2/4" size="lg">
               <ShoppingBag className="mr-2 h-5 w-5" /> Add to Bag
             </Button>
           </motion.div>
+          <div className="mt-12 space-y-8">
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Product Details</h2>
+              <p className="text-muted-foreground">
+                {product.description}
+                {/* Add more detailed product information here */}
+              </p>
+            </section>
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Care Instructions</h2>
+              <ul className="list-disc list-inside text-muted-foreground">
+                <li>Machine wash cold</li>
+                <li>Tumble dry low</li>
+                <li>Do not bleach</li>
+                <li>Iron on low heat if needed</li>
+              </ul>
+            </section>
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Shipping & Returns</h2>
+              <p className="text-muted-foreground">
+                Free standard shipping on orders over ₦20,000. Express shipping available at checkout. Returns accepted
+                within 30 days of purchase. See our full return policy for more details.
+              </p>
+            </section>
+          </div>
         </div>
         <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-6">Related Products</h2>
+          <h2 className="text-2xl font-bold mb-6">You May Also Like</h2>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.map((relatedProduct, index) => (
               <motion.div
