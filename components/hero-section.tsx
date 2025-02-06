@@ -24,7 +24,7 @@ export function HeroSection() {
         className="absolute inset-0 bg-cover bg-center"
       />
       <div
-        className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-500"
+        className="absolute inset-0 bg-black bg-opacity-30 transition-opacity duration-500"
         style={{
           opacity: inView ? 0.5 : 0,
         }}
