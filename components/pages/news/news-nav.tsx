@@ -13,13 +13,13 @@ export function NewsNav() {
   ] as const
 
   return (
-    <nav className="flex space-x-4">
+    <nav className="flex justify-center gap-8">
       {items.map((item) => (
         <button
           key={item.value}
           onClick={() => setCurrentView(item.value)}
           className={cn(
-            "relative px-3 py-2 text-sm font-medium transition-colors hover:text-primary",
+            "relative px-2 sm:px-3 py-2 text-base sm:text-lg font-anton transition-colors hover:text-primary whitespace-nowrap uppercase",
             currentView === item.value ? "text-primary" : "text-white/80",
           )}
         >
@@ -27,7 +27,7 @@ export function NewsNav() {
           {currentView === item.value && (
             <motion.div
               layoutId="activeTab"
-              className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+              className="absolute -bottom-2 left-0 right-0 h-0.5 bg-primary"
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           )}

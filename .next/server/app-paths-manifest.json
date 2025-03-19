@@ -1,3 +1,8 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/club/page": "app/club/page.js",
+  "/news/page": "app/news/page.js",
+  "/matchday/page": "app/matchday/page.js",
+  "/fan-shop/page": "app/fan-shop/page.js",
   "/page": "app/page.js"
 }

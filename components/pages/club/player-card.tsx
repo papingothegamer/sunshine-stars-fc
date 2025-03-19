@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 interface PlayerCardProps {
   player: {
@@ -16,35 +17,51 @@ interface PlayerCardProps {
 
 export function PlayerCard({ player }: PlayerCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.2 }}
-    >
-      <Card className="overflow-hidden group">
+    <div>
+      <Card className="overflow-hidden group relative bg-gradient-to-br from-background/50 to-background/10 backdrop-blur-sm border-primary/10 hover:border-primary/30 transition-colors">
         <CardContent className="p-0">
-          <div className="relative aspect-[3/4]">
+          {/* Player Number Badge */}
+          <div className="absolute top-4 left-4 z-10">
+            <Badge variant="default" className="text-xl font-bold px-3 py-1.5 bg-primary/90 backdrop-blur-sm">
+              {player.number}
+            </Badge>
+          </div>
+
+          {/* Player Images */}
+          <div className="relative aspect-[3/4] overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-[1]" />
             <img
               src={player.normalImage || "/placeholder.svg"}
               alt={player.name}
-              className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <img
               src={player.hoverImage || "/placeholder.svg"}
               alt={`${player.name} action shot`}
-              className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-700"
             />
           </div>
-          <div className="p-4 text-center">
-            <h3 className="font-bold text-lg">{player.name}</h3>
-            <p className="text-sm text-muted-foreground">
-              {player.number} / {player.position}
-            </p>
+
+          {/* Player Info */}
+          <div className="relative z-10 -mt-20 pb-6 px-4">
+            <div className="space-y-2 text-center">
+              <h3 className="font-bold text-2xl text-white drop-shadow-lg">
+                {player.name}
+              </h3>
+              <Badge 
+                variant="secondary" 
+                className="bg-white/10 backdrop-blur-sm text-white/90 px-3 py-1"
+              >
+                {player.position}
+              </Badge>
+            </div>
           </div>
+
+          {/* Hover Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   )
 }
 

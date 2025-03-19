@@ -1,59 +1,143 @@
 export interface Video {
-    id: string
-    title: string
-    thumbnail: string
-    videoUrl: string
-    duration: string
-    date: string
-    category: "highlights" | "interview" | "tactical-analysis" | "behind-the-scenes"
-  }
-  
-  export const videos: Video[] = [
-    {
-      id: "1",
-      title: "Match Highlights: Sunshine Stars 2-1 City Rivals",
-      thumbnail: "/placeholder.svg",
-      videoUrl: "https://example.com/video1.mp4",
-      duration: "10:32",
-      date: "2025-01-24",
-      category: "highlights",
-    },
-    {
-      id: "2",
-      title: "Post-Match Interview: Coach Discusses Tactical Approach",
-      thumbnail: "/placeholder.svg",
-      videoUrl: "https://example.com/video2.mp4",
-      duration: "5:45",
-      date: "2025-01-24",
-      category: "interview",
-    },
-    {
-      id: "3",
-      title: "Tactical Analysis: Breaking Down the Winning Goal",
-      thumbnail: "/placeholder.svg",
-      videoUrl: "https://example.com/video3.mp4",
-      duration: "7:20",
-      date: "2025-01-25",
-      category: "tactical-analysis",
-    },
-    {
-      id: "4",
-      title: "Behind the Scenes: New Signing's First Day at the Club",
-      thumbnail: "/placeholder.svg",
-      videoUrl: "https://example.com/video4.mp4",
-      duration: "8:15",
-      date: "2025-01-23",
-      category: "behind-the-scenes",
-    },
-    {
-      id: "5",
-      title: "Training Ground: Preparing for the Next Match",
-      thumbnail: "/placeholder.svg",
-      videoUrl: "https://example.com/video5.mp4",
-      duration: "6:50",
-      date: "2025-01-22",
-      category: "behind-the-scenes",
-    },
-  ]
-  
-  
+  id: string
+  title: string
+  description: string
+  date: string
+  duration: string
+  category: "highlights" | "interview" | "tactical-analysis" | "behind-the-scenes" | "training" | "fan-content" | "academy" | "analysis"
+  thumbnail?: string
+  url: string
+}
+
+export const videos: Video[] = [
+  {
+    id: "1",
+    title: "Match Highlights: Sunshine Stars vs City Rangers",
+    description: "Watch the key moments from our thrilling 3-2 victory.",
+    date: "2023-09-15",
+    duration: "5:32",
+    category: "highlights",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video1",
+  },
+  {
+    id: "2",
+    title: "Player Interview: Ibrahim Sunusi",
+    description: "Our captain discusses the season opener and his winning goal.",
+    date: "2023-09-16",
+    duration: "8:45",
+    category: "interview",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video2",
+  },
+  {
+    id: "3",
+    title: "Training Ground: Pre-Season Preparations",
+    description: "Behind the scenes look at how the team prepared for the new season.",
+    date: "2023-09-01",
+    duration: "12:20",
+    category: "training",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video3",
+  },
+  {
+    id: "4",
+    title: "Match Highlights: Metro Knights vs Sunshine Stars",
+    description: "All the action from our away fixture against Metro Knights.",
+    date: "2023-09-08",
+    duration: "6:15",
+    category: "highlights",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video4",
+  },
+  {
+    id: "5",
+    title: "Coach's Corner: Tactical Breakdown",
+    description: "Head coach analyzes our recent performances and tactical approach.",
+    date: "2023-09-12",
+    duration: "15:30",
+    category: "analysis",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video5",
+  },
+  {
+    id: "6",
+    title: "Fan Reactions: Season Opener",
+    description: "Fans share their thoughts after our dramatic opening day victory.",
+    date: "2023-09-15",
+    duration: "4:45",
+    category: "fan-content",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video6",
+  },
+  {
+    id: "7",
+    title: "Match Highlights: Sunshine Stars vs Coastal United",
+    description: "Watch the key moments from our match against Coastal United.",
+    date: "2023-09-22",
+    duration: "5:50",
+    category: "highlights",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video7",
+  },
+  {
+    id: "8",
+    title: "Youth Academy Showcase",
+    description: "Featuring the rising stars from our renowned youth academy.",
+    date: "2023-09-05",
+    duration: "10:15",
+    category: "academy",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video8",
+  },
+  {
+    id: "9",
+    title: "Match Highlights: Sunshine Stars 2-1 City Rivals",
+    description: "Watch the highlights from our thrilling victory against City Rivals.",
+    date: "2025-01-24",
+    duration: "10:32",
+    category: "highlights",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video1.mp4",
+  },
+  {
+    id: "10",
+    title: "Post-Match Interview: Coach Discusses Tactical Approach",
+    description: "Coach shares insights on the tactical approach after the match.",
+    date: "2025-01-24",
+    duration: "5:45",
+    category: "interview",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video2.mp4",
+  },
+  {
+    id: "11",
+    title: "Tactical Analysis: Breaking Down the Winning Goal",
+    description: "An in-depth analysis of the winning goal's tactics.",
+    date: "2025-01-25",
+    duration: "7:20",
+    category: "tactical-analysis",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video3.mp4",
+  },
+  {
+    id: "12",
+    title: "Behind the Scenes: New Signing's First Day at the Club",
+    description: "A look behind the scenes at the new signing's first day.",
+    date: "2025-01-23",
+    duration: "8:15",
+    category: "behind-the-scenes",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video4.mp4",
+  },
+  {
+    id: "13",
+    title: "Training Ground: Preparing for the Next Match",
+    description: "See how the team prepares for their upcoming match.",
+    date: "2025-01-22",
+    duration: "6:50",
+    category: "behind-the-scenes",
+    thumbnail: "/placeholder.svg",
+    url: "https://example.com/video5.mp4",
+  },
+]

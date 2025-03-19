@@ -1,20 +1,25 @@
 "use client"
 
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { Menu, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, ShoppingBag } from "lucide-react"
-import { useState, useEffect } from "react"
 import { useCart } from "@/components/cart/cart-context"
+import { cn } from "@/lib/utils"
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { cartItems } = useCart()
 
   useEffect(() => {
-    setIsMounted(true)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const menuItems = [
@@ -26,62 +31,35 @@ export function Navbar() {
     { href: "/fan-shop", label: "Fan Shop" },
   ]
 
-  const handleLinkClick = () => {
-    if (isMounted && window.innerWidth <= 768) {
-      setIsMobileMenuOpen(false)
-    }
-  }
-
-  const NavItems = () => (
-    <>
-      {menuItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className="text-sm font-medium text-secondary hover:text-primary transition-colors px-3"
-          onClick={handleLinkClick}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </>
-  )
-
   return (
-    <motion.header initial={{ y: -100 }} animate={{ y: 0 }} className="sticky top-0 z-50 w-full border-b bg-white">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b transition-all duration-300",
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white",
+      )}
+    >
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <motion.img
-            src="/media/img/badge.png"
-            alt="Sunshine Stars FC"
-            className="h-10 w-10"
-            whileHover={{ scale: 1.1 }}
-          />
+          <img src="/media/img/badge.png" alt="Sunshine Stars FC" className="h-10 w-10" />
+          <span className="font-anton text-lg hidden sm:inline-block">SUNSHINE STARS FC</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center flex-1">
-          <NavItems />
+        <nav className="hidden md:flex items-center space-x-6">
+          {menuItems.map((item) => (
+            <Link 
+              key={item.href} 
+              href={item.href} 
+              className="px-3 py-2 text-sm font-anton uppercase tracking-wide hover:text-primary transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Mobile Menu and Cart */}
         <div className="flex items-center space-x-4">
-          {isMounted && window.innerWidth <= 768 && (
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[240px] sm:w-[300px]">
-                <nav className="flex flex-col space-y-4 mt-8">
-                  <NavItems />
-                </nav>
-              </SheetContent>
-            </Sheet>
-          )}
           <Link href="/cart" className="relative">
             <ShoppingBag className="h-6 w-6" />
             {cartItems.length > 0 && (
@@ -90,9 +68,32 @@ export function Navbar() {
               </span>
             )}
           </Link>
+
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[280px] sm:w-[350px]">
+              <nav className="flex flex-col space-y-4 mt-8">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-lg font-anton uppercase tracking-wide hover:text-primary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-    </motion.header>
+    </header>
   )
 }
 

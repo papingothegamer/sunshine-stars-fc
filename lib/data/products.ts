@@ -7,7 +7,7 @@ export interface Product {
   price: number
   originalPrice?: number
   discount?: number
-  image: string
+  images: string[]
   category: "kits" | "training" | "lifestyle" | "accessories"
   subCategory?: string
   sizes?: string[]
@@ -30,8 +30,11 @@ export const products: Product[] = [
     price: 15000,
     originalPrice: 20000,
     discount: 30,
-    image:
+    images: [
       "/media/img/club/kits/SS-Home.webp",
+      "/media/img/club/kits/SS-Home-2.webp",
+      "/media/img/club/kits/SS-Home-3.webp",
+    ],
     category: "kits",
     subCategory: "home",
     sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
@@ -47,7 +50,10 @@ export const products: Product[] = [
     price: 15000,
     originalPrice: 20000,
     discount: 30,
-    image: "/media/img/club/kits/SS-Away 2.webp",
+    images: [
+      "/media/img/club/kits/SS-Away-1.webp",
+      "/media/img/club/kits/SS-Away-2.webp",
+    ],
     category: "kits",
     subCategory: "away",
     sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
@@ -62,7 +68,7 @@ export const products: Product[] = [
     price: 15000,
     originalPrice: 20000,
     discount: 30,
-    image: "/media/img/club/kits/SS-Third.webp",
+    images: ["/media/img/club/kits/SS-Third.webp",],
     category: "kits",
     subCategory: "third",
     sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
@@ -74,7 +80,7 @@ export const products: Product[] = [
     name: "Sunshine Stars Training Jacket",
     description: "Official training jacket worn by the team. Perfect for training sessions and casual wear.",
     price: 12000,
-    image: "/media/img/misc/fan-shop/training/preview-2025-02-05T18_01_41.755Z.png",
+    images: ["/media/img/misc/fan-shop/training/preview-2025-02-05T18_01_41.755Z.png",],
     category: "training",
     sizes: ["S", "M", "L", "XL", "2XL"],
     inStock: true,
@@ -84,7 +90,7 @@ export const products: Product[] = [
     name: "Sunshine Stars Lifestyle Jacket",
     description: "Casual styled jacket featuring the Sunshine Stars logo. Perfect for everyday wear.",
     price: 5000,
-    image: "/media/img/misc/fan-shop/lifestyle/mockup.webp",
+    images: ["/media/img/misc/fan-shop/lifestyle/mockup.webp",],
     category: "lifestyle",
     sizes: ["S", "M", "L", "XL", "2XL"],
     inStock: true,
@@ -96,8 +102,8 @@ export const products: Product[] = [
     price: 3000,
     originalPrice: 4000,
     discount: 25,
-    image:
-      "/media/img/misc/fan-shop/accessories/scarf-mockup-2.webp",
+    images:
+      ["/media/img/misc/fan-shop/accessories/scarf-mockup-2.webp",],
     category: "accessories",
     inStock: true,
   },
@@ -108,8 +114,8 @@ export const products: Product[] = [
     price: 3000,
     originalPrice: 4000,
     discount: 25,
-    image:
-      "/media/img/misc/fan-shop/accessories/Bucket Hat Mockup.webp",
+    images:
+      ["/media/img/misc/fan-shop/accessories/Bucket Hat Mockup.webp",],
     category: "accessories",
     inStock: true,
   },
@@ -123,7 +129,7 @@ export const createPlayerKit = (player: Player): Product => {
     price: 15000,
     originalPrice: 20000,
     discount: 30,
-    image: "/placeholder.svg",
+    images: ["/placeholder.svg",],
     category: "kits",
     subCategory: "player",
     sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
